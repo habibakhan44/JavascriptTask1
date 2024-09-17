@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM LEARNING</title>
+    <style>
+      body {
+        background-color: lavender;
+        font-family: Arial, sans-serif;
+      }
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+     
+      input {
+        margin: 5px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 3px;
+        border: 2.5px solid cadetblue;
+      }
+
+      
+      button {
+        margin: 10px 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color:#7e4759;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+       
+        background-color: peachpuff ;
+      }
+
+      
+      .display-container {
+        width: 300px;
+        margin-top: 20px;
+        margin-left: 40%;
+        padding: 15px;
+        border: 2px solid cadetblue;
+        border-radius: 7px;
+        background-color: peachpuff;
+        text-align: center;
+        font-size: 45px;
+      
+      }
+
+      
+      .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+
+     
+      .display-container p {
+        font-size: 18px;
+        color: black;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="form-container">
+      <label for="tableno">Which table do you want to print?</label>
+      <input id="tableno" type="number" />
+
+      <label for="minlength">Number to start table</label>
+      <input id="minlength" type="number" />
+
+      <label for="maxlength">Number to end table</label>
+      <input id="maxlength" type="number" />
+
+      <button onclick="printTable()">Print Table</button>
+      <button onclick="refresh()">Refresh</button>
+    </div>
+
+   
+    <div class="display-container">
+      <p id="displaytable"></p>
+    </div>
+
+    <script>
+      function printTable() {
+        let table = document.getElementById("tableno").value;
+        let minlength = document.getElementById("minlength").value;
+        let maxlength = document.getElementById("maxlength").value;
+
+        document.getElementById("displaytable").innerHTML = ""; 
+
+        for (let i = minlength; i <= maxlength; i++) {
+          document.getElementById("displaytable").innerHTML += 
+            `${table} x ${i} = ${table * i}<br>`;
+        }
+      }
+
+      function refresh() {
+        document.getElementById("tableno").value = "";
+        document.getElementById("minlength").value = "";
+        document.getElementById("maxlength").value = "";
+        document.getElementById("displaytable").innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
